@@ -1,0 +1,63 @@
+<style>
+    .topnav-right {
+        float: right;
+
+    }
+
+    .topbar-flex {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .elements-flex {
+        display: flex;
+    }
+
+    .logout {
+        padding-right: 10px;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand ms-3" href="/admin">E-GasBooking App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav topbar-flex">
+            <div class="elements-flex">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/new-booking" routerLinkActive="active">New Booking</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/customers" routerLinkActive="active">Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/cylinders" routerLinkActive="active">Cylinders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/new-cylinder" routerLinkActive="active">New Cylinder</a>
+                </li>
+            </div>
+            <div>
+                <li class="topnav-end">>
+
+                    <a class="nav-link" href="#" (click)="onLogout()" class="right logout">Logout</a>
+
+                </li>
+            </div>
+
+
+        </ul>
+    </div>
+
+</nav>
+<div class="container mt-4">
+    <router-outlet></router-outlet>
+</div>

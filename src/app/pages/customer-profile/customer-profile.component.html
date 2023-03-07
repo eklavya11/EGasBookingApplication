@@ -1,0 +1,143 @@
+<div class="register_page mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h1>Customer Profile</h1>
+                    <hr>
+                    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" [noValidate]="false">
+
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-user"></i> Username</label>
+                                    <input type="text" class="form-control" disabled
+                                        [(ngModel)]="currentLoggedInUser.username" name="username">
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-envelope"></i> Email
+                                        address</label>
+                                    <input type="email" class="form-control" [(ngModel)]="currentLoggedInUser.email"
+                                        name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                        id="exampleInputEmail1" required aria-describedby="emailHelp">
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-phone"></i> Mobile
+                                        Number</label>
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.mobileNumber" name="mobileNumber"
+                                        pattern="^\d{10}$" minlength="10" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">FLat, Building No</label>
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.addessLine1" name="addessLine1" minlength="5"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Area, Society</label>
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.addessLine2" name="addessLine2" minlength="5"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-city"></i> City</label>
+                                    <input type="text" class="form-control" [(ngModel)]="currentLoggedInUser.city"
+                                        name="city" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">State</label>
+                                    <input type="text" class="form-control" [(ngModel)]="currentLoggedInUser.state"
+                                        name="state" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Country</label>
+                                    <input type="text" class="form-control" [(ngModel)]="currentLoggedInUser.country"
+                                        name="country" required>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Pin Code</label>
+                                    <input type="text" class="form-control" [(ngModel)]="currentLoggedInUser.zipCode"
+                                        name="zipCode" pattern="^\d{6}$" minlength="6" maxlength="6" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">PAN</label>
+                                    <input type="text" class="form-control" [(ngModel)]="currentLoggedInUser.pan"
+                                        name="pan" minlength="10" maxlength="10" required>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Account No</label>
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.bank.accountNo" name="accountNo"
+                                        pattern="^[0-9]*$" minlength="10" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Bank Name</label>
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.bank.bankName" name="bankName" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">ifsc No</label>
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.bank.ifscNo" name="ifscNo" minlength="11"
+                                        maxlength="11" required>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="roleId">Cylinder</label>
+                                    <select class="form-control" disabled
+                                        [(ngModel)]="currentLoggedInUser.cylinder.cylinderId" name="cylinderId">
+                                        <option [value]="item.cylinderId" *ngFor="let item of cylinderList">
+                                            {{item.type}} : {{item.weight}} KG : {{item.price |
+                                            currency:"INR":"symbol"}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1"><i class="fa-solid fa-lock"></i> Password</label>
+                                    <input type="password" class="form-control"
+                                        [(ngModel)]="currentLoggedInUser.password" name="password"
+                                        id="exampleInputPassword1" required minlength="8">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary mt-3">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

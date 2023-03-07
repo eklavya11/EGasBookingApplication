@@ -1,0 +1,173 @@
+<div class="admin_cylinder">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h1><i class="fa-brands fa-searchengin"></i> Search Cylinders</h1>
+                    <hr>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true"><b>Filter By Strap Color</b></button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false"><b>Filter By Type</b></button>
+                            <button class="nav-link" id="nav-weight-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-weight" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false"><b>Filter By Weight</b></button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <form #filterByCylinderForm="ngForm" (ngSubmit)="cylinderByStrapColor(filterByCylinderForm)"
+                                [noValidate]="false">
+                                <div class="row">
+                                    <div class="col-8 mt-3">
+                                        <div class="form-group">
+                                            <label for="roleId"><b>Strap Color</b></label>
+                                            <input type="text" class="form-control" ngModel name="strapColor"
+                                                minlength="1" maxlength="10"
+                                                pattern="^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$"
+                                                placeholder="Enter strap color" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary mt-3">Search</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <form #filterByCylinderAForm="ngForm" (ngSubmit)="cylinderByType(filterByCylinderAForm)"
+                                [noValidate]="false">
+                                <div class="row">
+                                    <div class="col-8 mt-3">
+                                        <div class="form-group">
+                                            <label for="roleId"><b>Type</b></label>
+                                            <input type="text" class="form-control" ngModel name="type" minlength="1"
+                                                maxlength="10" pattern="^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$"
+                                                placeholder="Enter type" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary mt-3">Search</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="nav-weight" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <form #filterByCylinderBForm="ngForm" (ngSubmit)="cylinderByWeight(filterByCylinderBForm)"
+                                [noValidate]="false">
+                                <div class="row">
+                                    <div class="col-8 mt-3">
+                                        <div class="form-group">
+                                            <label for="roleId"><b>Weight</b></label>
+                                            <input type="number" step="0.01" min="15" max="18" class="form-control"
+                                                ngModel name="weight" placeholder="Enter weight" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary mt-3">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card">
+                        <h1><i class="fa-solid fa-list"></i> Cylinders</h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                        <th>Cylinder Id</th>
+                                        <th>Price</th>
+                                        <th>Strap Color</th>
+                                        <th>Type</th>
+                                        <th>Weight</th>
+                                        <th>Update</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of cylinders">
+                                            <td> {{item?.cylinderId}}</td>
+                                            <td> {{item?.price | currency : "INR": "symbol"}}</td>
+                                            <td> {{item?.strapColor}}</td>
+                                            <td> {{item?.type}}</td>
+                                            <td> {{item?.weight}} Kg</td>
+                                            <td>
+                                                <button type="button" (click)="onUpdateClick(item)"
+                                                    class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal start-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <form #addCylinderForm="ngForm" (ngSubmit)="onSubmit(addCylinderForm)" [noValidate]="false">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Update Cylinder Details</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="cylinderPrice">Price</label>
+                                    <input type="number" step="0.01" min="900" max="1100" class="form-control"
+                                        [(ngModel)]="selectedCylinder.price" name="price" required>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="cylinderStrapColor">Strap Color</label>
+                                    <input type="text" class="form-control" [(ngModel)]="selectedCylinder.strapColor"
+                                        name="strapColor" minlength="1" maxlength="10"
+                                        pattern="^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$" required>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="cylinderType">Type</label>
+                                    <input type="text" class="form-control" [(ngModel)]="selectedCylinder.type"
+                                        name="type" minlength="1" maxlength="10"
+                                        pattern="^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$" required>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="cylinderWeight">Weight</label>
+                                    <input type="number" step="0.01" min="15" max="18" class="form-control"
+                                        [(ngModel)]="selectedCylinder.weight" name="weight" required>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeModalBtn" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="button" type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal END-->
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <h1><i class="fa-solid fa-circle-plus"></i> Create New Cylinder</h1>
+                <hr>
+                <form #addCylinderForm="ngForm" (ngSubmit)="onSubmit(addCylinderForm)" [noValidate]="false">
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <label for="cylinderPrice"><b>Price</b></label>
+                                <input type="number" step="0.01" min="900" max="1200" class="form-control" ngModel name="price" required
+                                    placeholder="Enter cylinder price">
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <label for="cylinderStrapColor"><b>Strap Color</b></label>
+                                <input type="text" class="form-control" ngModel name="strapColor" minlength="1" maxlength="10" required
+                                    pattern="^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$" placeholder="Enter cylinder strap color">
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <label for="cylinderType"><b>Type</b></label>
+                                <input type="text" class="form-control" ngModel name="type" minlength="1" maxlength="10" required
+                                    pattern="^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$" placeholder="Enter cylinder type">
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <label for="cylinderWeight"><b>Weight</b></label>
+                                <input type="number" step="0.01"  min="15" max="18" class="form-control" ngModel name="weight" required
+                                placeholder="Enter cylinder weight">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

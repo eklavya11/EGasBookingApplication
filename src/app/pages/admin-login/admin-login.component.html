@@ -1,0 +1,48 @@
+<style>
+    .submit{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        margin-top:20px;
+    }
+</style>
+
+<div class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <h1>Admin Login</h1>
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" [noValidate]="false">
+
+                        <div class="row">
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-user"></i>Email</label>
+                                    <input type="text" class="form-control" ngModel name="email"
+                                        id="exampleInputEmail1" placeholder="Enter email" 
+                                        required aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1"><i class="fa-solid fa-lock"></i> Password</label>
+                                    <input type="password" class="form-control" ngModel name="password"
+                                        id="exampleInputPassword1" placeholder="Enter password" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="submit">
+                            <button type="submit" class="btn btn-outline-primary">Login <i class="fa-solid fa-right-to-bracket"></i></button>
+                            <a href="/admin-register" class="ms-3"> Register admin</a>
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

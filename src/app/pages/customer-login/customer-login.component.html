@@ -1,0 +1,45 @@
+<style>
+    .submit{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        margin-top:20px;
+    }
+</style>
+
+<div class="login_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <h1>Customer Login</h1>
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" [noValidate]="false">
+                       
+                        <div class="row">
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-user"></i> Email </label>
+                                    <input type="text" class="form-control" ngModel name="email" placeholder="Enter email" required aria-describedby="emailHelp">
+                                    <!-- <span *ngIf = "username.invalid && username.touched" style="color: red;"> Please enter a valid username</span> -->
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1"><i class="fa-solid fa-lock"></i> Password</label>
+                                    <input type="password" class="form-control" ngModel name="password" id="exampleInputPassword1" placeholder="Enter password" required >
+                                    <!-- <span *ngIf = "password.invalid && password.touched" style="color: red;"> Please enter a valid password</span> -->
+                                </div>
+                            </div>
+                        </div>
+                       <div class="submit">
+                        <button type="submit" class="btn btn-outline-primary">Login <i class="fa-solid fa-right-to-bracket"></i></button>
+                        <a href="/customer-register" class="ms-3">Register Customer</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

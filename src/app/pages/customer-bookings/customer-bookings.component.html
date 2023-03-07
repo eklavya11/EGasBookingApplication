@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <h1><i class="fa-solid fa-list"></i> My Cylinder Bookings</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <th>Booking ID</th>
+                                <th>Booking Date</th>
+                                <th>Delivery Date</th>
+                                <th>Bill Amount</th>
+                                <th>Strap Color</th>
+                                <th>Cylinder Type</th>
+                                <th>Weight</th>
+                                <th>Cancel</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of bookings">
+                                    <td>{{item?.gasBookingId}}</td>
+                                    <td>{{item?.bookingDate | date}}</td>
+                                    <td>{{item?.deliveryDate | date}}</td>
+                                    <td>{{item?.bill | currency: "INR": 'symbol'}}</td>
+                                    <td>{{item?.customer?.cylinder?.strapColor}}</td>
+                                    <td>{{item?.customer?.cylinder?.type}}</td>
+                                    <td>{{item?.customer?.cylinder?.weight}} KG</td>
+                                    <td>
+                                        <button class="btn btn-danger" (click)="onDelete(+item.gasBookingId)" type="button"><i class="fa-solid fa-ban"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

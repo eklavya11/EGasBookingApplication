@@ -1,0 +1,43 @@
+<div class="login_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h1>Book New Cylinder</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered ">
+                                <thead>
+                                    <th>Cylinder ID</th>
+                                    <th>Strap Color</th>
+                                    <th>Cylinder Type</th>
+                                    <th>Weight</th>
+                                    <th>Price</th>
+                                    <th>Book New</th>
+                                    <th>Surrender</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{currentLoggedInUser?.cylinder?.cylinderId}}</td>
+                                        <td>{{currentLoggedInUser?.cylinder?.strapColor}}</td>
+                                        <td>{{currentLoggedInUser?.cylinder?.type}}</td>
+                                        <td>{{currentLoggedInUser?.cylinder?.weight}} KG</td>
+                                        <td>{{currentLoggedInUser?.cylinder?.price | currency: "INR": "symbol"}}</td>
+                                        <td>
+                                            <button [disabled]="disableBtn" class="btn btn-outline-primary mt-3" (click)="onSubmit()" type="button"> Book Now </button>
+                                        </td>
+                                        <td>
+                                            <button [disabled]="disableBtn" class="btn btn-outline-secondary mt-3" (click)="onSurrender()" type="button"> Surrender Now
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

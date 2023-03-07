@@ -1,0 +1,48 @@
+<div class="login_page">
+    <div class="cantainer">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="card">
+                    <h1>Registered Customers</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered ">
+                                <thead>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile Number</th>
+                                    <th>Area, Society</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Bank Name</th>
+                                    <th>Bank Account</th>
+                                    <th>IFSC Code</th>
+                                    <th>PAN</th>
+                                    <th>Delete</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of customers">
+                                        <td> {{item?.username}}</td>
+                                        <td> {{item?.email}}</td>
+                                        <td> {{item?.mobileNumber}}</td>
+                                        <td> {{item?.addessLine2}}</td>
+                                        <td> {{item?.city}}</td>
+                                        <td> {{item?.state}}</td>
+                                        <td> {{item?.bank?.bankName}}</td>
+                                        <td> {{item?.bank?.accountNo}}</td>
+                                        <td> {{item?.bank?.ifscNo}}</td>
+                                        <td> {{item?.pan}}</td>
+                                        <td>
+                                            <button class="btn btn-danger" type="button" (click)="onDelete(item.userId)"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

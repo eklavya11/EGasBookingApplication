@@ -1,0 +1,38 @@
+<style>
+    .submit{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        margin-top:20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <h1>New Booking</h1>
+                <hr>
+                <form #newBookingForm="ngForm" (ngSubmit)="onSubmit(newBookingForm)" [noValidate]="false">
+
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <label for="roleId">Customer</label>
+                                <select class="form-control" ngModel name="customerId" required>
+                                    <option [value]="item.userId" *ngFor="let item of customers">{{item.username}} : {{item.weight}} KG :
+                                        {{item.email }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit">
+                        <button type="submit" class="btn btn-outline-primary">Book</button>
+                        <a href="/customer-register" class="ms-3"> Register Customer</a>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

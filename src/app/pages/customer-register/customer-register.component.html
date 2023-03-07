@@ -1,0 +1,130 @@
+<div class="register_page mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h1>Customer Registration</h1>
+                    
+                    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" [noValidate]="false">
+
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-user"></i> User Name</label>
+                                    <input type="text" class="form-control" ngModel name="username" placeholder="Enter user name" required>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-envelope"></i> Email
+                                        address</label>
+                                    <input type="email" class="form-control" ngModel name="email"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="exampleInputEmail1"
+                                        placeholder="Enter email" required aria-describedby="emailHelp">
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-phone"></i> Mobile
+                                        Number</label>
+                                    <input type="text" class="form-control" ngModel name="mobileNumber"
+                                        pattern="^\d{10}$" minlength="10" maxlength="10" placeholder="Enter mobile number" required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">FLat, Building No</label>
+                                    <input type="text" class="form-control" ngModel name="addessLine1" minlength="5"
+                                    placeholder="Enter FLat, Building No" required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Area, Society</label>
+                                    <input type="text" class="form-control" ngModel name="addessLine2" minlength="5"
+                                    placeholder="Area, Society" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><i class="fa-solid fa-city"></i> City</label>
+                                    <input type="text" class="form-control" ngModel name="city" placeholder="Enter city" required>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">State</label>
+                                    <input type="text" class="form-control" ngModel name="state" placeholder="Enter state" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Country</label>
+                                    <input type="text" class="form-control" ngModel name="country" placeholder="Enter country" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Pin Code</label>
+                                    <input type="text" class="form-control" ngModel name="zipCode" pattern="^\d{6}$"
+                                        minlength="6" maxlength="6" placeholder="Enter Pin Code" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">PAN</label>
+                                    <input type="text" class="form-control" ngModel name="pan" minlength="10"
+                                        maxlength="10" placeholder="Enter pan" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Account No</label>
+                                    <input type="text" class="form-control" ngModel name="accountNo" 
+                                    pattern="^[0-9]*$" minlength="10" maxlength="10" placeholder="Enter account number" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Bank Name</label>
+                                    <input type="text" class="form-control" ngModel name="bankName" placeholder="Enter bank name" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">IFSC No</label>
+                                    <input type="text" class="form-control" ngModel name="ifscNo" minlength="11"
+                                        maxlength="11" placeholder="Enter IFSC number" required>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="roleId">Cylinder</label>
+                                    <select class="form-control" ngModel name="cylinderId" required>
+                                        <option [value]="item.cylinderId" *ngFor="let item of cylinderList">
+                                            {{item.type}} : {{item.weight}} KG : {{item.price |
+                                            currency:"INR":"symbol"}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1"><i class="fa-solid fa-lock"></i> Password</label>
+
+                                    <input type="password" class="form-control" ngModel name="password"
+                                        id="exampleInputPassword1" placeholder="Enter password" required minlength="8">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary mt-3">Register</button>
+                        <a href="/customer-login" class="ms-3">Login Customer</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

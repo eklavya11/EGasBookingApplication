@@ -1,0 +1,109 @@
+<div class="cantainer">
+    <div class="row mb-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <h1>Search Bookings</h1>
+                <hr>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true">Filter By Date</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Filter By
+                            Customer</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <form #filterByDateForm="ngForm" (ngSubmit)="filterByDate(filterByDateForm)"
+                            [noValidate]="false">
+
+                            <div class="row">
+                                <div class="col-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Start Date</label>
+                                        <input type="date" class="form-control" ngModel name="fromDate" required
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">End Date</label>
+                                        <input type="date" class="form-control" ngModel name="toDate" required
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-primary mt-3">Search</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <form #filterByCustomerIdForm="ngForm" (ngSubmit)="filterByCustomerId(filterByCustomerIdForm)"
+                            [noValidate]="false">
+
+                            <div class="row">
+
+                                <div class="col-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="roleId">Customer</label>
+                                        <select class="form-control" ngModel name="customerId" required>
+                                            <option [value]="item.userId" *ngFor="let item of customers">
+                                                {{item.username}} : {{item.weight}} KG :
+                                                {{item.email }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-primary mt-3">Search</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <h1>Cylinder Bookings</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <th>Booking ID</th>
+                                <th>Booking Date</th>
+                                <th>Delivery Date</th>
+                                <th>Bill Amount</th>
+                                <th>Strap Color</th>
+                                <th>Cylinder Type</th>
+                                <th>Weight</th>
+                                <th>Delete</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of bookings">
+                                    <td>{{item?.gasBookingId}}</td>
+                                    <td>{{item?.bookingDate | date}}</td>
+                                    <td>{{item?.deliveryDate | date}}</td>
+                                    <td>{{item?.bill | currency: "INR": 'symbol'}}</td>
+                                    <td>{{item?.customer.cylinder.strapColor}}</td>
+                                    <td>{{item?.customer.cylinder.type}}</td>
+                                    <td>{{item?.customer.cylinder.weight}} KG</td>
+                                    <td>
+                                        <button class="btn btn-danger" (click)="onDelete(+item.gasBookingId)"
+                                            type="button"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
