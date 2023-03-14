@@ -16,19 +16,19 @@ export class BankDTO {
     zipCode!: string;
 }
 
-export interface AdminRegisterDTO {
-    addessLine1: string;
-    addessLine2: string;
-    adminName: string;
-    city: string;
-    country: string;
-    email: string;
-    mobileNumber: string;
-    password: string;
-    state: string;
-    userId: number;
-    username: string;
-    zipCode: string;
+export class AdminRegisterDTO {
+    addessLine1!: string;
+    addessLine2!: string;
+    adminName!: string;
+    city!: string;
+    country!: string;
+    email!: string;
+    mobileNumber!: string;
+    password!: string;
+    state!: string;
+    userId!: number;
+    username!: string;
+    zipCode!: string;
 }
 
 export interface CylinderDTO {

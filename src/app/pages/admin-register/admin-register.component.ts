@@ -12,6 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminRegisterComponent {
 
+  admin: AdminRegisterDTO = new AdminRegisterDTO();
+
   pwd = "";
   confirmpwd = "";
 

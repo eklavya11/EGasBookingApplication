@@ -20,7 +20,7 @@
  
                                     </div>
                                     <div *ngIf="username.errors?.['pattern']" class="alert alert-danger">
-                                    Username contains only lowercase alphabets and digits
+                                    Username contains only lowercase alphabets and digits e.g:eklavya, eklavya123
  
                                     </div>
  
@@ -42,7 +42,7 @@
  
                                     </div>
                                     <div *ngIf="email.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid Email
+                                        Please enter a valid email e.g : eklavya@capgemini.com
                                     </div>
  
                                  </div>
@@ -62,7 +62,7 @@
  
                                     </div>
                                     <div *ngIf="mobileNumber.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid Mobile Number
+                                        Please enter a valid 10-digit Indian mobile number starting with a digit between 6 and 9.
                                     </div>
  
                                  </div>
@@ -72,7 +72,7 @@
                                     <label for="exampleInputEmail1">FLat, Building No</label>
                                     <input type="text" class="form-control" [(ngModel)]="customer.addessLine1"  
                                     #addessLine1 = 'ngModel'  name="addessLine1" 
-                                    pattern="^[a-zA-Z0-9]{3,20}$" 
+                                    pattern="^(?=.*\d{2})[a-zA-Z0-9]{3,6}$" 
                                     placeholder="Enter FLat, Building No" required>
                                 </div>
                                 <div *ngIf="addessLine1.invalid && (addessLine1.dirty||addessLine1.touched)">
@@ -81,7 +81,7 @@
  
                                     </div>
                                     <div *ngIf="addessLine1.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid Flat Number
+                                    Enter valid Flat Number e.g:A12,B45C,345,A1607
                                     </div>
  
                                  </div>
@@ -90,7 +90,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Area, Society</label>
                                     <input type="text" class="form-control" [(ngModel)]="customer.addessLine2"  
-                                    #addessLine2 = 'ngModel'  name="addessLine2"  pattern="^[a-zA-Z ]{5,50}$"
+                                    #addessLine2 = 'ngModel'  name="addessLine2"  pattern="^[a-zA-Z ,]{5,50}$"
                                     placeholder="Area, Society" required>
                                 </div>
                                 <div *ngIf="addessLine2.invalid && (addessLine2.dirty||addessLine2.touched)">
@@ -99,7 +99,7 @@
  
                                     </div>
                                     <div *ngIf="addessLine2.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid Society name
+                                        Enter valid Society name e.g: Sparklet, New Heights
                                     </div>
  
                                  </div>
@@ -108,7 +108,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><i class="fa-solid fa-city"></i> City</label>
                                     <select class="form-control" ngModel name="city" required>
-                                        <option value="">Select city</option>
+                                        <option value="">--Select city--</option>
                                         <option value="New Delhi">New Delhi</option>
                                         <option value="Mumbai">Mumbai</option>
                                         <option value="Kolkata">Kolkata</option>
@@ -204,7 +204,7 @@
  
                                     </div>
                                     <div *ngIf="zipCode.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid Pincode
+                                    Please enter a valid 6-digit pin code e.g:123 456 or 123456, where the first digit cannot be 0.
                                     </div>
  
                                  </div>
@@ -222,7 +222,7 @@
  
                                     </div>
                                     <div *ngIf="pan.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid PAN number
+                                        Please enter a valid PAN number in the format of ABCDE1234F
                                     </div>
  
                                  </div>
@@ -240,7 +240,7 @@
  
                                     </div>
                                     <div *ngIf="accountNo.errors?.['pattern']" class="alert alert-danger">
-                                    Enter valid Account number
+                                    Account number must be of 9 digits
                                     </div>
  
                                  </div>
@@ -277,7 +277,7 @@
 
                                    </div>
                                    <div *ngIf="ifscNo.errors?.['pattern']" class="alert alert-danger">
-                                    IFSC contains only alphanumeric characters in uppercase.
+                                    Please enter a valid IFSC code in the format of ABCD0123456, fifth character must be 0
 
                                    </div>
 
@@ -298,17 +298,40 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1"><i class="fa-solid fa-lock"></i> Password</label>
 
-                                    <input type="password" class="form-control" [(ngModel)]="pwd" name="password"
-                                        id="exampleInputPassword1" placeholder="Enter password" required minlength="8">
+                                    <input type="password" class="form-control" [(ngModel)]="pwd" name="password" #password = 'ngModel'
+                                        id="exampleInputPassword1" placeholder="Enter password" required pattern ="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$">
                                 </div>
+                                <div *ngIf="password.invalid && (password.dirty||password.touched)">
+                                    <div *ngIf="password.errors?.['required']" class="alert alert-danger">
+                                     Password is required
+ 
+                                    </div>
+                                    <div *ngIf="password.errors?.['pattern']" class="alert alert-danger">
+                                        Please enter a valid password that is at least 8 characters long and contains at least one uppercase letter, one lowercase letter, one digit, and one special character
+ 
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputPassword2"><i class="fa-solid fa-lock"></i>Confirm Password</label>
 
-                                    <input type="password" class="form-control" [(ngModel)]="confirmpwd" 
-                                        id="exampleInputPassword2" name="confirmpwd" placeholder="Enter confirm password" required minlength="8">
+                                    <input type="password" class="form-control" [(ngModel)]="confirmpwd" #cpassword = 'ngModel'
+                                        id="exampleInputPassword2" name="confirmpwd" placeholder="Enter confirm password" required pattern ="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$">
                                 </div>
+                            
+                            <div *ngIf="cpassword.invalid && (cpassword.dirty||cpassword.touched)">
+                                <div *ngIf="cpassword.errors?.['required']" class="alert alert-danger">
+                                 Password is required
+
+                                </div>
+                                <div *ngIf="cpassword.errors?.['pattern']" class="alert alert-danger">
+                                    Please enter a valid password that is at least 8 characters long and contains at least one uppercase letter, one lowercase letter, one digit, and one special character.
+
+                                </div>
+
+                             </div>
                             </div>
                             <div *ngIf = "pwd!=confirmpwd">
                                 <p>Passwords do not match!!</p>
