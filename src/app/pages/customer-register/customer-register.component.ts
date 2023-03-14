@@ -6,24 +6,46 @@ import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { BankService } from 'src/app/services/bank.service';
 import { CylinderService } from 'src/app/services/cylinder.service';
+import { ApiService } from 'src/app/services/api.service';
+import { FormControl, Validators } from '@angular/forms';
+
+
+
+
 
 
 @Component({
   selector: 'app-customer-register',
   templateUrl: './customer-register.component.html',
-  styleUrls: ['./customer-register.component.scss']
+  styleUrls: ['./customer-register.component.css']
 })
 export class CustomerRegisterComponent {
 
+  bank: BankDTO = new BankDTO();
+  customer: CustomerRegisterDTO = new CustomerRegisterDTO();
+
   cylinderList: CylinderDTO[] = [];
   bankList: BankDTO[] = [];
+  pwd = "";
+  confirmpwd = "";
+ 
 
   constructor(
+    private api: ApiService,
     private alert: AlertService,
     private auth: AuthService,
     private bankService: BankService,
     private cylinderService: CylinderService
   ) { }
+
+  // registerCustomer(data: CustomerRegisterDTO) {
+  //   console.log(JSON.stringify(data));
+  //   this.api.post('/customer/insert-customer', data).subscribe((res: any) => {
+  //     this.alert.success('Registration successful.')
+  //   }, this.alert.apiFail);
+  // }
+
+  
 
   ngOnInit() {
     this.cylinderService.getAll().subscribe((res: any) => {
@@ -37,7 +59,9 @@ export class CustomerRegisterComponent {
       this.alert.error("Please fill required elements");
       return;
     }
+    
 
+    
     const { accountNo, bankName, ifscNo, cylinderId, ...customerData } = ngForm.form.value;
 
 
@@ -59,9 +83,15 @@ export class CustomerRegisterComponent {
       userId: 0,
     }
 
-
-    this.auth.registerCustomer(credentials);
-    ngForm.resetForm();
+    this.api.post('/customer/insert-customer', credentials).subscribe((res: any) => {
+      this.alert.success('Registration successful.')
+      ngForm.resetForm();
+    }, this.alert.apiFail);
+    // this.registerCustomer(credentials);
+    
+    
+    
+    // ngForm.resetForm();
 
   }
 

@@ -7,7 +7,7 @@ import { BookingService } from 'src/app/services/booking.service';
 @Component({
   selector: 'app-admin-new-booking',
   templateUrl: './admin-new-booking.component.html',
-  styleUrls: ['./admin-new-booking.component.scss']
+  styleUrls: ['./admin-new-booking.component.css']
 })
 export class AdminNewBookingComponent {
 

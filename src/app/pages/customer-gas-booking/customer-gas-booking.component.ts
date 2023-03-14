@@ -9,7 +9,7 @@ import { CylinderService } from 'src/app/services/cylinder.service';
 @Component({
   selector: 'app-customer-gas-booking',
   templateUrl: './customer-gas-booking.component.html',
-  styleUrls: ['./customer-gas-booking.component.scss']
+  styleUrls: ['./customer-gas-booking.component.css']
 })
 export class CustomerGasBookingComponent {
 

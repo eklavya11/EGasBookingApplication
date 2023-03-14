@@ -49,10 +49,7 @@ const routes: Routes = [
         path: 'admin-login',
         component: AdminLoginComponent
       },
-      {
-        path: 'admin-register',
-        component: AdminRegisterComponent
-      },
+      
 
     ]
   },
@@ -85,6 +82,10 @@ const routes: Routes = [
       {
         path: 'new-cylinder',
         component: AdminNewCylinderComponent
+      },
+      {
+        path: 'admin-register',
+        component: AdminRegisterComponent
       },
 
     ]

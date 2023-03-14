@@ -18,8 +18,8 @@ export class AlertService {
   apiFail1(res: any) {
     Swal.fire(res?.error?.error || 'Warning..', res?.error?.message || 'Wrong credentials', 'error');
   }
-  apiFail(res: any) {
-    Swal.fire(res?.statusCode || 'API fail', res?.message || 'Something went wrong', 'error');
+  apiFail(res : any) {
+    Swal.fire(res?.error?.message);
   }
   apiFail2(res: any) {
     Swal.fire(res?.error?.error || 'Warning..', res?.error?.message || 'Already Booked', 'error');

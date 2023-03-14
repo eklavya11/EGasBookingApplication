@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Lato', sans-serif;
+background-color:#1cb1f1; }
+.card {
+    border-radius: unset;
+    padding: 15px;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.10),
+        0px 1px 20px 0px rgba(0, 0, 0, 0.10) !important;
+        border: none;
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+/* // body{
+//     background: #ee0979;
+//         /* fallback for old browsers */
+/* //         background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+//         /* Chrome 10-25, Safari 5.1-6 */
+/* //         background: linear-gradient(to right, #ff6a00, #ee0979);
+//         W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ */ */
+body{
+    /* //background-image: url(''); */
+    background:aqua;
+        /* fallback for old browsers */
+        /* // background: -webkit-linear-gradient(to right, #f11c35, #ea2785); */
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #1cb1f1, #1cb1f1);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

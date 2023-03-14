@@ -3,17 +3,17 @@ export interface LoginDTO {
     email: string;
 }
 
-export interface BankDTO {
-    accountNo: number;
-    addessLine1: string;
-    addessLine2: string;
-    bankId: number;
-    bankName: string;
-    city: string;
-    country: string;
-    ifscNo: string;
-    state: string;
-    zipCode: string;
+export class BankDTO {
+    accountNo!: number;
+    addessLine1!: string;
+    addessLine2!: string;
+    bankId!: number;
+    bankName!: string;
+    city!: string;
+    country!: string;
+    ifscNo!: string;
+    state!: string;
+    zipCode!: string;
 }
 
 export interface AdminRegisterDTO {
@@ -39,21 +39,21 @@ export interface CylinderDTO {
     strapColor: string;
 }
 
-export interface CustomerRegisterDTO {
-    addessLine1: string;
-    addessLine2: string;
-    bank: BankDTO;
-    city: string;
-    country: string;
-    cylinder: CylinderDTO;
-    email: string;
-    mobileNumber: string;
-    pan: string;
-    password: string;
-    state: string;
-    userId: number;
-    username: string;
-    zipCode: string;
+export class CustomerRegisterDTO {
+    addessLine1!: string;
+    addessLine2!: string;
+    bank!: BankDTO;
+    city!: string;
+    country!: string;
+    cylinder!: CylinderDTO;
+    email!: string;
+    mobileNumber!: string;
+    pan!: string;
+    password!: string;
+    state!: string;
+    userId!: number;
+    username!: string;
+    zipCode!: string;
 }
 
 export interface GasBookingDto {

@@ -6,7 +6,7 @@ import { BookingService } from 'src/app/services/booking.service';
 @Component({
   selector: 'app-customer-bookings',
   templateUrl: './customer-bookings.component.html',
-  styleUrls: ['./customer-bookings.component.scss']
+  styleUrls: ['./customer-bookings.component.css']
 })
 export class CustomerBookingsComponent {
   public currentLoggedInUser: CustomerRegisterDTO | undefined;

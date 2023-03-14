@@ -8,7 +8,7 @@ import { BookingService } from 'src/app/services/booking.service';
 @Component({
   selector: 'app-admin-booking-list',
   templateUrl: './admin-booking-list.component.html',
-  styleUrls: ['./admin-booking-list.component.scss']
+  styleUrls: ['./admin-booking-list.component.css']
 })
 export class AdminBookingListComponent {
   public bookings: any[] = [];

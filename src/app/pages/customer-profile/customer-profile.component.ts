@@ -9,7 +9,7 @@ import { CylinderService } from 'src/app/services/cylinder.service';
 @Component({
   selector: 'app-customer-profile',
   templateUrl: './customer-profile.component.html',
-  styleUrls: ['./customer-profile.component.scss']
+  styleUrls: ['./customer-profile.component.css']
 })
 export class CustomerProfileComponent {
   cylinderList: CylinderDTO[] = [];
@@ -22,9 +22,12 @@ export class CustomerProfileComponent {
   ) { }
 
   ngOnInit() {
+    
     this.auth.getLoggedInCustomer().subscribe(res => {
       this.currentLoggedInUser = res as CustomerRegisterDTO;
-      sessionStorage.setItem('LOGGED_IN_USER_DETAILS', JSON.stringify(res));
+      let userRef:any = res;
+      userRef.password= "";
+      sessionStorage.setItem('LOGGED_IN_USER_DETAILS', JSON.stringify(userRef));
 
     });
 

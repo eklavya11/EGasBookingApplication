@@ -11,99 +11,283 @@
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><i class="fa-solid fa-user"></i> User Name</label>
-                                    <input type="text" class="form-control" ngModel name="username" placeholder="Enter user name" required>
+                                    <input type="text" class="form-control" [(ngModel)]="customer.username" name="username" 
+                                    #username = 'ngModel'  pattern="^[a-z0-9]{3,20}$" placeholder="Enter user name" required>
                                 </div>
+                                <div *ngIf="username.invalid && (username.dirty||username.touched)">
+                                    <div *ngIf="username.errors?.['required']" class="alert alert-danger">
+                                     Username is required
+ 
+                                    </div>
+                                    <div *ngIf="username.errors?.['pattern']" class="alert alert-danger">
+                                    Username contains only lowercase alphabets and digits
+ 
+                                    </div>
+ 
+                                 </div>
                             </div>
 
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><i class="fa-solid fa-envelope"></i> Email
                                         address</label>
-                                    <input type="email" class="form-control" ngModel name="email"
+                                    <input type="email" class="form-control" [(ngModel)]="customer.email" name="email" 
+                                    #email = 'ngModel'
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="exampleInputEmail1"
                                         placeholder="Enter email" required aria-describedby="emailHelp">
                                 </div>
+                                <div *ngIf="email.invalid && (email.dirty||email.touched)">
+                                    <div *ngIf="email.errors?.['required']" class="alert alert-danger">
+                                     Email is required
+ 
+                                    </div>
+                                    <div *ngIf="email.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid Email
+                                    </div>
+ 
+                                 </div>
                             </div>
 
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><i class="fa-solid fa-phone"></i> Mobile
                                         Number</label>
-                                    <input type="text" class="form-control" ngModel name="mobileNumber"
-                                        pattern="^\d{10}$" minlength="10" maxlength="10" placeholder="Enter mobile number" required>
+                                    <input type="text" class="form-control" [(ngModel)]="customer.mobileNumber" name="mobileNumber" 
+                                    #mobileNumber = 'ngModel'
+                                        pattern="^[6-9][0-9]{9}$"  placeholder="Enter mobile number" required>
                                 </div>
+                                <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty||mobileNumber.touched)">
+                                    <div *ngIf="mobileNumber.errors?.['required']" class="alert alert-danger">
+                                     Mobile Number is required
+ 
+                                    </div>
+                                    <div *ngIf="mobileNumber.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid Mobile Number
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-6 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">FLat, Building No</label>
-                                    <input type="text" class="form-control" ngModel name="addessLine1" minlength="5"
+                                    <input type="text" class="form-control" [(ngModel)]="customer.addessLine1"  
+                                    #addessLine1 = 'ngModel'  name="addessLine1" 
+                                    pattern="^[a-zA-Z0-9]{3,20}$" 
                                     placeholder="Enter FLat, Building No" required>
                                 </div>
+                                <div *ngIf="addessLine1.invalid && (addessLine1.dirty||addessLine1.touched)">
+                                    <div *ngIf="addessLine1.errors?.['required']" class="alert alert-danger">
+                                     Flat Number is required
+ 
+                                    </div>
+                                    <div *ngIf="addessLine1.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid Flat Number
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-6 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Area, Society</label>
-                                    <input type="text" class="form-control" ngModel name="addessLine2" minlength="5"
+                                    <input type="text" class="form-control" [(ngModel)]="customer.addessLine2"  
+                                    #addessLine2 = 'ngModel'  name="addessLine2"  pattern="^[a-zA-Z ]{5,50}$"
                                     placeholder="Area, Society" required>
                                 </div>
+                                <div *ngIf="addessLine2.invalid && (addessLine2.dirty||addessLine2.touched)">
+                                    <div *ngIf="addessLine2.errors?.['required']" class="alert alert-danger">
+                                     Society is required
+ 
+                                    </div>
+                                    <div *ngIf="addessLine2.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid Society name
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><i class="fa-solid fa-city"></i> City</label>
-                                    <input type="text" class="form-control" ngModel name="city" placeholder="Enter city" required>
+                                    <select class="form-control" ngModel name="city" required>
+                                        <option value="">Select city</option>
+                                        <option value="New Delhi">New Delhi</option>
+                                        <option value="Mumbai">Mumbai</option>
+                                        <option value="Kolkata">Kolkata</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Bengaluru">Bengaluru</option>
+                                        <option value="Hyderabad">Hyderabad</option>
+                                        <option value="Ahmedabad">Ahmedabad</option>
+                                        <option value="Jaipur">Jaipur</option>
+                                        <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                                        <option value="Lucknow">Lucknow</option>
+                                        <option value="Bhopal">Bhopal</option>
+                                        <option value="Patna">Patna</option>
+                                        <option value="Raipur">Raipur</option>
+                                        <option value="Dehradun">Dehradun</option>
+                                        <option value="Itanagar">Itanagar</option>
+                                        <option value="Dispur">Dispur</option>
+                                        <option value="Panaji">Panaji</option>
+                                        <option value="Shillong">Shillong</option>
+                                        <option value="Aizawl">Aizawl</option>
+                                        <option value="Imphal">Imphal</option>
+                                        <option value="Gangtok">Gangtok</option>
+                                        <option value="Agartala">Agartala</option>
+                                    </select>
                                 </div>
                             </div>
+                            
 
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">State</label>
-                                    <input type="text" class="form-control" ngModel name="state" placeholder="Enter state" required>
+                                    <select class="form-control" ngModel name="state" required>
+                                        <option value="">--Select state--</option>
+                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                        <option value="Daman and Diu">Daman and Diu</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Ladakh">Ladakh</option>
+                                        <option value="Lakshadweep">Lakshadweep</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Puducherry">Puducherry</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                    </select>
                                 </div>
                             </div>
+                            
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Country</label>
-                                    <input type="text" class="form-control" ngModel name="country" placeholder="Enter country" required>
+                                    <select class="form-control" ngModel name="country" required>
+                                        <option value="">--Select Country--</option>
+                                        <option value="India">India</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Pin Code</label>
-                                    <input type="text" class="form-control" ngModel name="zipCode" pattern="^\d{6}$"
-                                        minlength="6" maxlength="6" placeholder="Enter Pin Code" required>
+                                    <input type="text" class="form-control" [(ngModel)]="customer.zipCode"  
+                                    #zipCode = 'ngModel'  name="zipCode" pattern="^[1-9][0-9]{2}\s{0,1}[0-9]{3}$"
+                                         placeholder="Enter Pin Code" required>
                                 </div>
+                                <div *ngIf="zipCode.invalid && (zipCode.dirty||zipCode.touched)">
+                                    <div *ngIf="zipCode.errors?.['required']" class="alert alert-danger">
+                                     Pincode is required
+ 
+                                    </div>
+                                    <div *ngIf="zipCode.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid Pincode
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">PAN</label>
-                                    <input type="text" class="form-control" ngModel name="pan" minlength="10"
-                                        maxlength="10" placeholder="Enter pan" required>
+                                    <input type="text" class="form-control" [(ngModel)]="customer.pan"  
+                                    #pan = 'ngModel'   name="pan" 
+                                        pattern="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" placeholder="Enter pan" required>
                                 </div>
+                                <div *ngIf="pan.invalid && (pan.dirty||pan.touched)">
+                                    <div *ngIf="pan.errors?.['required']" class="alert alert-danger">
+                                     PAN is required
+ 
+                                    </div>
+                                    <div *ngIf="pan.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid PAN number
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Account No</label>
-                                    <input type="text" class="form-control" ngModel name="accountNo" 
-                                    pattern="^[0-9]*$" minlength="10" maxlength="10" placeholder="Enter account number" required>
+                                    <input type="text" class="form-control" [(ngModel)]="bank.accountNo"  
+                                    #accountNo = 'ngModel'    name="accountNo" 
+                                    pattern="^[0-9]{9}$"  placeholder="Enter account number" required>
                                 </div>
+                                <div *ngIf="accountNo.invalid && (accountNo.dirty||accountNo.touched)">
+                                    <div *ngIf="accountNo.errors?.['required']" class="alert alert-danger">
+                                     Account number is required
+ 
+                                    </div>
+                                    <div *ngIf="accountNo.errors?.['pattern']" class="alert alert-danger">
+                                    Enter valid Account number
+                                    </div>
+ 
+                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Bank Name</label>
-                                    <input type="text" class="form-control" ngModel name="bankName" placeholder="Enter bank name" required>
+                                    <select class="form-control" ngModel name="bankName" required>
+                                        <option value="">--Select Bank--</option>
+                                        <option value="HDFC Bank">HDFC Bank</option>
+                                        <option value="ICICI Bank">ICICI Bank</option>
+                                        <option value="Axis Bank">Axis Bank</option>
+                                        <option value="UCO Bank">UCO Bank</option>
+                                        <option value="Union Bank">Union Bank</option>
+                                        <option value="State Bank of India">State Bank of India</option>
+                                        <option value="Central Bank">Central Bank</option>
+                                        <option value="Yes Bank">Yes Bank</option>
+                                        <option value="PNB">PNB</option>
+                                        <option value="Indian Bank">Indian Bank</option>
+                                    </select>
                                 </div>
                             </div>
+                            
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">IFSC No</label>
-                                    <input type="text" class="form-control" ngModel name="ifscNo" minlength="11"
-                                        maxlength="11" placeholder="Enter IFSC number" required>
+                                    <input type="text" class="form-control" [(ngModel)]="bank.ifscNo" name="ifscNo" 
+                                      #ifscNo = 'ngModel'  pattern="^[A-Z]{4}[0]{1}[A-Z0-9]{6}$" placeholder="Enter IFSC number" required>
+                                        
+                                </div>
+                                <div *ngIf="ifscNo.invalid && (ifscNo.dirty||ifscNo.touched)">
+                                   <div *ngIf="ifscNo.errors?.['required']" class="alert alert-danger">
+                                    IFSC is required
+
+                                   </div>
+                                   <div *ngIf="ifscNo.errors?.['pattern']" class="alert alert-danger">
+                                    IFSC contains only alphanumeric characters in uppercase.
+
+                                   </div>
+
                                 </div>
                             </div>
                             <div class="col-4 mt-3">
                                 <div class="form-group">
                                     <label for="roleId">Cylinder</label>
                                     <select class="form-control" ngModel name="cylinderId" required>
+                                        <option value="">--Select Cylinder--</option>
                                         <option [value]="item.cylinderId" *ngFor="let item of cylinderList">
                                             {{item.type}} : {{item.weight}} KG : {{item.price |
                                             currency:"INR":"symbol"}}</option>
@@ -114,9 +298,20 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1"><i class="fa-solid fa-lock"></i> Password</label>
 
-                                    <input type="password" class="form-control" ngModel name="password"
+                                    <input type="password" class="form-control" [(ngModel)]="pwd" name="password"
                                         id="exampleInputPassword1" placeholder="Enter password" required minlength="8">
                                 </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword2"><i class="fa-solid fa-lock"></i>Confirm Password</label>
+
+                                    <input type="password" class="form-control" [(ngModel)]="confirmpwd" 
+                                        id="exampleInputPassword2" name="confirmpwd" placeholder="Enter confirm password" required minlength="8">
+                                </div>
+                            </div>
+                            <div *ngIf = "pwd!=confirmpwd">
+                                <p>Passwords do not match!!</p>
                             </div>
                         </div>
 

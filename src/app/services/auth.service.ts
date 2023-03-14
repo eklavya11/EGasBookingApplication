@@ -10,19 +10,21 @@ import { ApiService } from './api.service';
 })
 export class AuthService {
 
+
+
   constructor(private api: ApiService, private alert: AlertService, private router: Router) { }
 
-  registerCustomer(data: CustomerRegisterDTO) {
-    console.log(JSON.stringify(data));
-    this.api.post('/customer/insert-customer', data).subscribe((res: any) => {
-      this.alert.success('Registration successful.')
-    }, this.alert.apiFail);
-  }
-  registerAdmin(data: AdminRegisterDTO) {
-    this.api.post('/admin/insertadmin', data).subscribe((res: any) => {
-      this.alert.success('Registration successful.')
-    }, this.alert.apiFail);
-  }
+  // registerCustomer(data: CustomerRegisterDTO) {
+  //   console.log(JSON.stringify(data));
+  //   this.api.post('/customer/insert-customer', data).subscribe((res: any) => {
+  //     this.alert.success('Registration successful.')
+  //   }, this.alert.apiFail);
+  // }
+  // registerAdmin(data: AdminRegisterDTO) {
+  //   this.api.post('/admin/registeradmin', data).subscribe((res: any) => {
+  //     this.alert.success('Registration successful.')
+  //   }, this.alert.apiFail);
+  // }
 
   loginCustomer(data: LoginDTO) {
     this.api.post('/validate/customer/login', data).subscribe((res: any) => {
@@ -68,7 +70,10 @@ export class AuthService {
   updateCustomer(credentials: CustomerRegisterDTO, callback?: () => void) {
     this.api.put(`/customer/update-customer/${credentials.userId}`, credentials).subscribe(res => {
       this.alert.success('Update successful.');
-      sessionStorage.setItem('LOGGED_IN_USER_DETAILS', JSON.stringify(res));
+      let userRef:any = res;
+      userRef.password= "";
+      
+      sessionStorage.setItem('LOGGED_IN_USER_DETAILS', JSON.stringify(userRef));
       if (callback) callback();
     });
   }

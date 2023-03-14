@@ -7,7 +7,7 @@ import { CylinderService } from 'src/app/services/cylinder.service';
 @Component({
   selector: 'app-admin-cylinder-list',
   templateUrl: './admin-cylinder-list.component.html',
-  styleUrls: ['./admin-cylinder-list.component.scss']
+  styleUrls: ['./admin-cylinder-list.component.css']
 })
 export class AdminCylinderListComponent {
 

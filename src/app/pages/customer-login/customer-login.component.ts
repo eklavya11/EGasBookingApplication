@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-customer-login',
   templateUrl: './customer-login.component.html',
-  styleUrls: ['./customer-login.component.scss']
+  styleUrls: ['./customer-login.component.css']
 })
 export class CustomerLoginComponent {
 

@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-admin-customer-list',
   templateUrl: './admin-customer-list.component.html',
-  styleUrls: ['./admin-customer-list.component.scss']
+  styleUrls: ['./admin-customer-list.component.css']
 })
 export class AdminCustomerListComponent {
   public customers: CustomerRegisterDTO[] = [];
